@@ -36,7 +36,7 @@ class FileModel():
             exit(1)
             
         except json.JSONDecodeError as e:
-            print(f"TChat setup failed: {self.META_PATH} failed to decode")
+            print(f"Chat setup failed: {self.META_PATH} failed to decode")
             exit(1)
     
     def load_chat(self, filename: str):

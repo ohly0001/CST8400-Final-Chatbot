@@ -11,6 +11,8 @@ class TransformerModel():
         self.metadata = None     
     
     def setup(self) -> None: 
+        os.makedirs(self.MODEL_PATH, exist_ok=True)
+        
         try:
             with open(self.META_PATH, 'r') as f:
                 self.metadata = json.load(f)
