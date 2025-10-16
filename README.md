@@ -5,7 +5,6 @@
 - View
 
 ## Structure
-
     TransformerModel
             ⇅
 App → Controller ⇄ View
