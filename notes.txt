@@ -4,35 +4,10 @@ Dataflow
 User (input) -> View (requests) -> Controller
 Controller (responds) -> View (output) -> User
 
-Controller (requests) -> DB Model
-DB Model (responds) -> Controller
+Controller (requests) -> CSV Model
+CSV Model (responds) -> Controller
 
 Controller (requests) -> AI Model
 AI Model (responds) -> Controller
 
-Startup
-Controller asks to DB to open connection
-Controller fetches from DB for past conversation
-Controller sends to view to show past conversation
-
-Shutdown
-Controller asks DB to close connection
-
-New Chat
-TODO
-
-Delete Chat
-TODO
-
-Rename Chat
-TODO
-
-Switch Chat
-TODO
-
-Prompt Processing
-View sends Prompt to Controller
-Controller sends Prompt + Prior History Cache to AI Model
-AI model sends respond to Controller
-Controller sends response to View
-Controller sends Prompt + Reponse to DB to persist it
+chats/ saves chats as seperate files
