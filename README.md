@@ -5,7 +5,7 @@
 - View
 
 ## Structure
-- App → Controller
+- App (Run) → Controller
 - Controller ⇄ View
 - Controller ⇄ TransformerModel
 - Controller ⇄ FileModel
