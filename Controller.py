@@ -13,7 +13,8 @@ class Controller():
         self.view.controller = self
         
     def setup(self):
-        self.f_model.setup()
+        self.file_controller.setup()
+        self.transformer.setup()
         # load previous_chat labels + ids from DB model
         # load last accessed chat
         # load data from DB Model for last accessed chat if any

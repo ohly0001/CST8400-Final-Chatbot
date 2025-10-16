@@ -1,11 +1,32 @@
+import json
+import os
 from llama_cpp import Llama, LlamaTokenizer
 
 class TransformerModel():
-    def __init__(self, max_tokens) -> None:
-        self.max_tokens = max_tokens
+    def __init__(self) -> None:
+        self.MODEL_PATH = r".\model"
+        self.META_PATH = r'.\metadata\model.json'
+        self.transformer = None
+        self.tokenizer = None
+        self.metadata = None     
+    
+    def setup(self) -> None: 
+        try:
+            with open(self.META_PATH, 'r') as f:
+                self.metadata = json.load(f)
+                
+        except OSError as e:
+            print(f"Transformer setup failed: {self.META_PATH} failed to open")
+            exit(1)   
+            
+        except json.JSONDecodeError as e:
+            print(f"Transformer setup failed: {self.META_PATH} failed to decode")
+            exit(1)       
+
         self.transformer = Llama.from_pretrained(
-            repo_id="TheBloke/Mistral-7B-Instruct-v0.1-GGUF",
-            filename="mistral-7b-instruct-v0.1.Q2_K.gguf",
+            repo_id=self.metadata['Llama']['repo_id'],
+            filename=self.metadata['Llama']['filename'],
+            MODEL_PATH=self.MODEL_PATH
         )
         self.tokenizer = LlamaTokenizer(self.transformer)
     

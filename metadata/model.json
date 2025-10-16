@@ -1,0 +1,6 @@
+{
+    "Llama": {
+        "repo_id":"TheBloke/Mistral-7B-Instruct-v0.1-GGUF",
+        "filename":"mistral-7b-instruct-v0.1.Q2_K.gguf"
+    }
+}

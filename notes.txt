@@ -11,3 +11,6 @@ Controller (requests) -> AI Model
 AI Model (responds) -> Controller
 
 chats/ saves chats as seperate files
+
+Chats are dynamically generated and can recover from its folder being absent or metadata undefined
+While the model is remotely downloaded if missing, it requires metadata to determine the model to fetch
