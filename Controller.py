@@ -1,13 +1,13 @@
-from MistralModel import MistralModel
+from TransformerModel import TransformerModel
 from FileModel import FileModel
 from View import View
 
 class Controller():
-    def __init__(self, view: View, f_model: FileModel, AI_model: MistralModel) -> None:
+    def __init__(self, view: View, file_controller: FileModel, transformer: TransformerModel) -> None:
         # Assign own links to components
         self.view = view
-        self.f_model = f_model
-        self.AI_model = AI_model
+        self.file_controller = file_controller
+        self.transformer = transformer
         
         # Link to view to receive allow calls from UI
         self.view.controller = self

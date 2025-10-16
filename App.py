@@ -1,5 +1,5 @@
 from FileModel import FileModel
-from MistralModel import MistralModel
+from TransformerModel import MistralModel
 from View import View
 from Controller import Controller
 
