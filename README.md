@@ -20,7 +20,7 @@ TheBloke/Mistral-7B-Instruct-v0.1-GGUF
      - Windows 10 or 11 SDK  
      - MSVC compiler  
      - CMake  
-2. Open a terminal and run:
+2. Open a terminal and run:\
 pip install ninja\
 set CMAKE_GENERATOR=Ninja\
-pip install llama-cpp-python[server]\
+pip install llama-cpp-python[server]
