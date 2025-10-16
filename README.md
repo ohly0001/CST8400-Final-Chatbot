@@ -1,3 +1,1 @@
-## required PIP installs
-- mysql-connector-python
-- 
+## Required PIP Installs
