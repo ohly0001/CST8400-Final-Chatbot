@@ -13,7 +13,7 @@ TheBloke/Mistral-7B-Instruct-v0.1-GGUF
 
 ## Installation
 1. Download and install **Visual Studio Build Tools**:  
-   https://visualstudio.microsoft.com/visual-cpp-build-tools/\ 
+   https://visualstudio.microsoft.com/visual-cpp-build-tools/ 
    - Select **Desktop Development with C++** in the installer.  
    - Make sure these components are checked:  
      - C++ build tools  
