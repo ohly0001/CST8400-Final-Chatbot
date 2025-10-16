@@ -1,16 +1,3 @@
-## Dataflow
-- App (Run) → Controller
-- Controller ⇄ View
-- Controller ⇄ TransformerModel
-- Controller ⇄ FileModel
-
-## Builtin Packages Used
-- os
-- json
-
-## Model Used
-TheBloke/Mistral-7B-Instruct-v0.1-GGUF 
-
 ## Installation
 1. Download and install **Visual Studio Build Tools**:  
    https://visualstudio.microsoft.com/visual-cpp-build-tools/ 
@@ -24,3 +11,12 @@ TheBloke/Mistral-7B-Instruct-v0.1-GGUF
 pip install ninja\
 set CMAKE_GENERATOR=Ninja\
 pip install llama-cpp-python[server]
+
+## Model Used
+TheBloke/Mistral-7B-Instruct-v0.1-GGUF 
+
+## Dataflow
+- App (Run) → Controller
+- Controller ⇄ View
+- Controller ⇄ TransformerModel
+- Controller ⇄ FileModel
