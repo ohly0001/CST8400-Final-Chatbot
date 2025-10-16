@@ -1,3 +1,5 @@
-./model
-./chats
-./metadata/chats.json
+/model/*
+
+/chats/*
+
+/metadata/chats.json

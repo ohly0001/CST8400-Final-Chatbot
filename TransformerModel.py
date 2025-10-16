@@ -28,7 +28,7 @@ class TransformerModel():
         self.transformer = Llama.from_pretrained(
             repo_id=self.metadata['Llama']['repo_id'],
             filename=self.metadata['Llama']['filename'],
-            MODEL_PATH=self.MODEL_PATH
+            local_dir=self.MODEL_PATH
         )
         self.tokenizer = LlamaTokenizer(self.transformer)
     
