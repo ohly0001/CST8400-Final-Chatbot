@@ -5,11 +5,10 @@
 - View
 
 ## Structure
-    TransformerModel
-            ⇅
-App → Controller ⇄ View
-            ⇅
-        FileModel
+App → Controller
+Controller ⇄ View
+Controller ⇄ TransformerModel
+Controller ⇄ FileModel
 
 ## Builtin Packages Used
 - os
