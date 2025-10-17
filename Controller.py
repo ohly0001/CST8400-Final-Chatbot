@@ -12,9 +12,12 @@ class Controller():
         # Link to view to receive allow calls from UI
         self.view.controller = self
         
+        self.current_history = []
+        
     def setup(self):
         self.file_controller.setup()
         self.transformer.setup()
+        self.open_chat_cmd(None)
         # load previous_chat labels from directory
         # load last accessed chat (only keep active chat in memory, the rest are kept on disk only)
         # load data from json file for last accessed chat if any
@@ -22,4 +25,19 @@ class Controller():
         pass
     
     def cleanup(self):
-        pass
+        self.file_controller.dump_chat(self.current_history)
+    
+    def new_chat_cmd(self, chat_name: str) -> bool:
+        return self.file_controller.new_chat(chat_name.strip() + ".json")
+    
+        #TODO update UI
+    
+    def delete_chat_cmd(self, chat_name: str) -> bool:
+        return self.file_controller.delete_chat(chat_name.strip() + ".json")
+    
+        #TODO update UI
+    
+    def open_chat_cmd(self, chat_name: str) -> bool:
+        self.current_history = self.file_controller.load_chat(chat_name.strip() + ".json")
+        
+        #TODO update UI

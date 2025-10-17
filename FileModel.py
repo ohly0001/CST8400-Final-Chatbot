@@ -25,12 +25,6 @@ class FileModel():
                     self.previous_chat_name = data.get('previous_chat_name', None)
                     self.user_name = data.get('user_name', None)
             
-                    if self.previous_chat_name is not None:
-                        self.chat_filenames = os.listdir(self.CHATS_PATH)
-                        if self.chat_filenames:
-                            file_index = self.chat_filenames.index(self.previous_chat_name) 
-                            self.load_chat(file_index)
-            
         except OSError:
             print(f"Chat setup failed: {self.META_PATH} failed to open")
             exit(1)
@@ -39,31 +33,39 @@ class FileModel():
             print(f"Chat setup failed: {self.META_PATH} failed to decode")
             exit(1)
     
-    def load_chat(self, filename: str):
+    def load_chat(self, filename: str = None) -> list[dict[str,str]] | None:
         if filename not in self.chat_filenames:
-            return {}
-        self.previous_chat_name = filename
+            return None
+        if filename: # default to previous chat
+            self.previous_chat_name = filename
         filepath = os.path.join(self.CHATS_PATH, filename)
         with open(filepath, 'r') as f:
             return json.load(f)
         
-    def dump_chat(self, data: dict[str, str]):
+    def dump_chat(self, data: list[dict[str, str]]) -> bool:
         if self.previous_chat_name and data:
             filepath = os.path.join(self.CHATS_PATH, self.previous_chat_name)
             with open(filepath, 'w') as f:
-                return json.dump(data, f, ensure_ascii=False, indent=4)
+                json.dump(data, f, ensure_ascii=False, indent=4)
+            return True
+        return False
             
-    def new_chat(self, chat_name: str):
+    def new_chat(self, chat_name: str) -> bool:
         filename = chat_name + '.json'
         if filename not in self.chat_filenames:
+            self.previous_chat_name = chat_name
             self.chat_filenames.append(filename)
             filepath = os.path.join(self.CHATS_PATH, filename)
             with open(filepath, 'x') as f:
                 f.write('{}')
+            return True
+        return False
             
-    def delete_chat(self, chat_name: str):
+    def delete_chat(self, chat_name: str) -> bool:
         filename = chat_name + '.json'
         if filename in self.chat_filenames:
             self.chat_filenames.remove(filename)
             filepath = os.path.join(self.CHATS_PATH, filename)
             os.remove(filepath)
+            return True
+        return False
