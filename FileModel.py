@@ -34,10 +34,10 @@ class FileModel():
             exit(1)
     
     def load_chat(self, filename: str = None) -> list[dict[str,str]] | None:
+        if not filename: # default to previous chat
+            self.previous_chat_name = filename
         if filename not in self.chat_filenames:
             return None
-        if filename: # default to previous chat
-            self.previous_chat_name = filename
         filepath = os.path.join(self.CHATS_PATH, filename)
         with open(filepath, 'r') as f:
             return json.load(f)

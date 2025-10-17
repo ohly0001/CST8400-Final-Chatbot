@@ -16,8 +16,13 @@ class Controller():
         
     def setup(self):
         self.file_controller.setup()
-        self.transformer.setup()
-        self.open_chat_cmd(None)
+        #self.transformer.setup()
+        #self.open_chat_cmd(None)
+        
+        self.view.setup()
+        self.current_history = self.file_controller.load_chat()
+        self.view.set_history(self.current_history)
+        
         # load previous_chat labels from directory
         # load last accessed chat (only keep active chat in memory, the rest are kept on disk only)
         # load data from json file for last accessed chat if any
@@ -26,6 +31,14 @@ class Controller():
     
     def cleanup(self):
         self.file_controller.dump_chat(self.current_history)
+        
+    def send_prompt_cmd(self, prompt_text):
+        prompt_text = self.transformer.USER_TAG + prompt_text
+        
+        self.current_history.append(prompt_text)
+        self.current_history = self.transformer(self.current_history)
+        
+        self.view.set_history(self.file_controller.user_name, self.current_history)
     
     def new_chat_cmd(self, chat_name: str) -> bool:
         return self.file_controller.new_chat(chat_name.strip() + ".json")
@@ -41,3 +54,5 @@ class Controller():
         self.current_history = self.file_controller.load_chat(chat_name.strip() + ".json")
         
         #TODO update UI
+        
+    

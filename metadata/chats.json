@@ -1,5 +1,5 @@
 {
-    "previous_chat_name": null,
-    "user_name": null,
+    "previous_chat_name": "test-chat",
+    "user_name": "bob",
     "max_tokens": 1000
 }
