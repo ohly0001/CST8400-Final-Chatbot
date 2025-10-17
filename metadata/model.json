@@ -1,6 +1,12 @@
 {
-    "Llama": {
+    "import": {
         "repo_id":"TheBloke/Mistral-7B-Instruct-v0.1-GGUF",
         "filename":"mistral-7b-instruct-v0.1.Q2_K.gguf"
+    },
+    "transformer": {
+        "ai-tag": "### Assistant: ",
+        "user-tag": "### User: ",
+        "max-out-tokens": 100,
+        "max-ctx-tokens": 2024
     }
 }

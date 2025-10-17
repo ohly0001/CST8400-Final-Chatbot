@@ -15,9 +15,9 @@ class Controller():
     def setup(self):
         self.file_controller.setup()
         self.transformer.setup()
-        # load previous_chat labels + ids from DB model
-        # load last accessed chat
-        # load data from DB Model for last accessed chat if any
+        # load previous_chat labels from directory
+        # load last accessed chat (only keep active chat in memory, the rest are kept on disk only)
+        # load data from json file for last accessed chat if any
         # populate view chat history with data
         pass
     
