@@ -18,6 +18,8 @@ class View():
         self.promptTF.pack()
         promptButton.pack()
         
+        self.set_history(self.controller.u)
+        
         self.root.mainloop()
         
     def send_prompt_cmd(self):

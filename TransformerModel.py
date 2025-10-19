@@ -19,22 +19,12 @@ class TransformerModel():
     def setup(self) -> None: 
         os.makedirs(self.MODEL_PATH, exist_ok=True)
         
-        try:
-            with open(self.META_PATH, 'r') as f:
-                data = json.load(f)
-                self.RESERVED_TOKENS = int(data['reserved-tokens'])
-                self.AI_TAG = data['transformer']['ai-tag']
-                self.USER_TAG = data['transformer']['user-tag']
-                self.MAX_OUT_TOKENS = int(data['transformer']['max-out-tokens'])
-                self.MAX_CTX_TOKENS = int(data['transformer']['max-ctx-tokens'])
-                
-        except OSError as e:
-            print(f"Transformer setup failed: {self.META_PATH} failed to open")
-            exit(1)   
-            
-        except json.JSONDecodeError as e:
-            print(f"Transformer setup failed: {self.META_PATH} failed to decode")
-            exit(1)       
+        with open(self.META_PATH, 'r') as f:
+            data = json.load(f)
+            self.AI_TAG = data['transformer']['ai-tag']
+            self.USER_TAG = data['transformer']['user-tag']
+            self.MAX_OUT_TOKENS = int(data['transformer']['max-out-tokens'])
+            self.MAX_CTX_TOKENS = int(data['transformer']['max-ctx-tokens'])
 
         self.transformer = Llama.from_pretrained(
             repo_id=self.metadata['import']['repo_id'],
@@ -44,6 +34,7 @@ class TransformerModel():
         self.tokenizer = LlamaTokenizer(self.transformer)
         
         self.AI_TAG_TOKENS = self._count_tokens(self.AI_TAG)
+        self.RESERVED_TOKENS = self.MAX_OUT_TOKENS + self.AI_TAG_TOKENS
         
     def _count_tokens(self, text: str) -> int:
         return len(self.tokenizer.encode(text))

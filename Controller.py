@@ -16,18 +16,12 @@ class Controller():
         
     def setup(self):
         self.file_controller.setup()
-        #self.transformer.setup()
-        #self.open_chat_cmd(None)
-        
-        self.view.setup()
+        self.transformer.setup()
+
         self.current_history = self.file_controller.load_chat()
-        self.view.set_history(self.current_history)
         
-        # load previous_chat labels from directory
-        # load last accessed chat (only keep active chat in memory, the rest are kept on disk only)
-        # load data from json file for last accessed chat if any
-        # populate view chat history with data
-        pass
+        self.transformer.setup()
+        self.view.setup()
     
     def cleanup(self):
         self.file_controller.dump_chat(self.current_history)
