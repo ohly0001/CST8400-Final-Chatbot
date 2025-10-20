@@ -18,7 +18,7 @@ class View():
         self.promptTF.pack()
         promptButton.pack()
         
-        self.set_history(self.controller.u)
+        self.set_history(self.controller.current_history)
         
         self.root.mainloop()
         
@@ -27,15 +27,15 @@ class View():
         
         self.controller.send_prompt_cmd(prompt_text)
         
-    def set_history(self, username: str, history: list[dict[str,str]]):
+    def set_history(self, history: list[dict[str,str]]):
         self.chatHistory = ""
         
         lines = []
         for entry in history:
-            if entry['actor'] == 'AI':
+            if entry['speaker'] == 'AI':
                 lines.append(f'Bot: {entry['text']}')
                 
-            elif entry['actor'] == 'User':
-                lines.append(f'{entry['text']:>15} :{username}')
+            elif entry['speaker'] == 'User':
+                lines.append(f'{entry['text']:>15} :User')
         
         self.chatHistoryContent = '\n'.join(lines)

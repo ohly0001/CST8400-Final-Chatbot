@@ -21,14 +21,15 @@ class TransformerModel():
         
         with open(self.META_PATH, 'r') as f:
             data = json.load(f)
-            self.AI_TAG = data['transformer']['ai-tag']
-            self.USER_TAG = data['transformer']['user-tag']
-            self.MAX_OUT_TOKENS = int(data['transformer']['max-out-tokens'])
-            self.MAX_CTX_TOKENS = int(data['transformer']['max-ctx-tokens'])
+            
+        self.AI_TAG = data['transformer']['ai-tag']
+        self.USER_TAG = data['transformer']['user-tag']
+        self.MAX_OUT_TOKENS = int(data['transformer']['max-out-tokens'])
+        self.MAX_CTX_TOKENS = int(data['transformer']['max-ctx-tokens'])
 
         self.transformer = Llama.from_pretrained(
-            repo_id=self.metadata['import']['repo_id'],
-            filename=self.metadata['import']['filename'],
+            repo_id=data['import']['repo_id'],
+            filename=data['import']['filename'],
             local_dir=self.MODEL_PATH
         )
         self.tokenizer = LlamaTokenizer(self.transformer)

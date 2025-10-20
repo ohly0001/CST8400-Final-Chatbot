@@ -6,7 +6,7 @@
     "transformer": {
         "ai-tag": "### Assistant: ",
         "user-tag": "### User: ",
-        "max-out-tokens": 100,
+        "max-out-tokens": 128,
         "max-ctx-tokens": 2024
     }
 }
