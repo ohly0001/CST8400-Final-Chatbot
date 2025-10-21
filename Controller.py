@@ -1,3 +1,4 @@
+import time
 from TransformerModel import TransformerModel
 from FileModel import FileModel
 from View import View
@@ -12,7 +13,9 @@ class Controller():
         # Link to view to receive allow calls from UI
         self.view.controller = self
         
+        self.current_conversation = None
         self.current_history = []
+        self.conversations = []
         
     def setup(self):
         self.file_controller.setup()
@@ -26,27 +29,30 @@ class Controller():
     def cleanup(self):
         self.file_controller.dump_chat(self.current_history)
         
-    def send_prompt_cmd(self, prompt_text):
-        prompt_text = self.transformer.USER_TAG + prompt_text
+    def create_conversation(self, name):
+        t = time.time()
+        data = {'metadata': {'createdOn': t,'lastAccessedOn': t}, 'content': []}
         
-        self.current_history.append(prompt_text)
-        self.current_history = self.transformer(self.current_history)
+        self.file_controller.write_file(name + ".json", data)
         
-        self.view.set_history(self.file_controller.user_name, self.current_history)
-    
-    def new_chat_cmd(self, chat_name: str) -> bool:
-        return self.file_controller.new_chat(chat_name.strip() + ".json")
-    
-        #TODO update UI
-    
-    def delete_chat_cmd(self, chat_name: str) -> bool:
-        return self.file_controller.delete_chat(chat_name.strip() + ".json")
-    
-        #TODO update UI
-    
-    def open_chat_cmd(self, chat_name: str) -> bool:
-        self.current_history = self.file_controller.load_chat(chat_name.strip() + ".json")
+        self.current_conversation = data
+        self.current_history = []
+        self.conversations.append(data)
         
-        #TODO update UI
-        
+    def switch_conversation(self, conv):
+        pass
     
+    def delete_conversation(self, conv):
+        pass
+    
+    def rename_conversation(self, conv, new_name):
+        pass
+    
+    def send_prompt(self, prompt_text):
+        pass
+    
+    def edit_message(self, idx, new_text):
+        pass
+    
+    def delete_message(self, idx):
+        pass
