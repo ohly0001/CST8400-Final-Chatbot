@@ -11,7 +11,7 @@
 2. Open a terminal on your desktop, or IDE application and run the following:\
 `pip install ninja`\
 `set CMAKE_GENERATOR=Ninja`\
-`pip install llama-cpp-python[server]`
+`pip install llama-cpp-python[server]`\
 `pip install keras`
 
 ## Model Used
