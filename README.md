@@ -1,8 +1,7 @@
 ## Installation
 1. Download and install the [Python](https://www.python.org/downloads/) language onto your system. *Recommended using Python version 3.13.0 or below, as newer versions are not fully supported by AI libraries yet.*
 2. Install [VS Code](https://code.visualstudio.com/) and its [Python language support](https://marketplace.visualstudio.com/items?itemName=ms-python.python) extensions. *Or use another IDE with Python support.*
-3. Download and install **Visual Studio Build Tools**:  
-   https://visualstudio.microsoft.com/visual-cpp-build-tools/ 
+3. Download and install [Visual Studio Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/):  
     - Select **Desktop Development with C++** in the installer.  
     - Make sure these components are checked:  
       - C++ build tools  
