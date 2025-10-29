@@ -17,7 +17,7 @@ You can skip certain steps if not installing from scatch.
 
 ## Running
 1. Perform [Installation Steps](#Installation) as required.
-2. Run App.py using your IDE's application launch button (▶) or via a CLI.
+2. Run App.py using your IDE's application launch button (▶) or via a CLI (Command Prompt, Powershell, Linux Shell).
 
 ## Model Used
 TheBloke/Mistral-7B-Instruct-v0.1-GGUF 
