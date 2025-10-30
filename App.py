@@ -4,7 +4,7 @@ from View import View
 from Controller import Controller
 
 if __name__ == '__main__':
-    view = View() #TODO change to use non blocking loop for main
+    view = View()
     f_model = FileModel()
     AI_model = TransformerModel()
     controller = Controller(view, f_model, AI_model) 

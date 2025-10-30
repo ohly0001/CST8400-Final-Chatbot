@@ -23,5 +23,12 @@ class FileModel():
          
         os.makedirs(self.CHATS_PATH, exist_ok=True)    
         self.chat_filenames = os.listdir(self.CHATS_PATH)
-    
-    
+        
+    def load_chat(self):
+        if self.current_chat:
+            filepath = os.path.join(self.CHATS_PATH, self.current_chat)
+            with open(filepath, 'r') as f:
+                return json.load(f)
+        
+        else:
+            return {}
